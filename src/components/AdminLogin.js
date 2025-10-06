@@ -61,7 +61,7 @@ const AdminLogin = () => {
     setLoading(true);
     try {
       await axios.post(`${BASE_URL}/api/admin/login`, formData);
-      localStorage.setItem('_dg_auth_x9j2m5h8k4p_token', 'true');
+      localStorage.setItem('isAdminLoggedIn', 'true');
       navigate('/admin/dashboard');
     } catch (error) {
       setError(

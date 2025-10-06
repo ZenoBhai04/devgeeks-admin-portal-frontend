@@ -40,8 +40,8 @@ const AdminDashboard = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-    const authToken = localStorage.getItem('_dg_auth_x9j2m5h8k4p_token');
-    if (!authToken) {
+    const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
+    if (!isLoggedIn) {
       navigate('/admin');
     } else {
       fetchPostings();

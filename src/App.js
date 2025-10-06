@@ -10,6 +10,7 @@ import CreateJobPosting from './components/CreateJobPosting';
 import JobApplicationForm from './components/JobApplicationForm';
 import ViewApplications from './components/ViewApplications';
 import Layout from './components/Layout';
+import Prism from './components/Prism';
 import theme from './theme';
 import './App.css';
 
@@ -26,6 +27,21 @@ function App() {
             <Route path="/admin/create-posting" element={<CreateJobPosting />} />
             <Route path="/apply/:id" element={<JobApplicationForm />} />
             <Route path="/admin/postings/:id/applications" element={<ViewApplications />} />
+            <Route path="/prism-demo" element={
+              <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+                <Prism
+                  animationType="rotate"
+                  timeScale={0.5}
+                  height={3.5}
+                  baseWidth={5.5}
+                  scale={3.6}
+                  hueShift={0}
+                  colorFrequency={1}
+                  noise={0.5}
+                  glow={1}
+                />
+              </div>
+            } />
           </Routes>
         </Layout>
       </Router>

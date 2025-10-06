@@ -11,7 +11,6 @@ import {
   Button,
   Alert,
   CircularProgress,
-  IconButton,
   Snackbar,
 } from '@mui/material';
 import { CloudUpload, ArrowBack } from '@mui/icons-material';

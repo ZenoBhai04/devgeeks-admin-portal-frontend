@@ -14,7 +14,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Chip,
 } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import BASE_URL from '../baseUrl';

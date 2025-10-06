@@ -101,17 +101,8 @@ const HomePage = () => {
           px: { xs: 2, sm: 3, md: 4 },
           mb: { xs: 4, md: 6 },
           overflow: 'hidden',
-          background: 'linear-gradient(145deg, #0A0A0A 0%, #1A1A1A 100%)',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle at 50% 0%, rgba(57, 255, 20, 0.05), transparent 70%)',
-            pointerEvents: 'none',
-          },
+          background: 'rgba(26, 26, 26, 0.3)',
+          backdropFilter: 'blur(10px)',
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>

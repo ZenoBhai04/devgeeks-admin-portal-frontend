@@ -11,8 +11,8 @@ import {
   useScrollTrigger,
   Slide,
 } from '@mui/material';
-import { Home, Person, AdminPanelSettings } from '@mui/icons-material';
-import BASE_URL from '../baseUrl';
+import { Home, AdminPanelSettings } from '@mui/icons-material';
+import Prism from './Prism';
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger();
 
@@ -39,7 +39,33 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.25,
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      >
+        <Prism
+          animationType="rotate"
+          timeScale={0.4}
+          height={3.5}
+          baseWidth={5.5}
+          scale={3.5}
+          hueShift={0}
+          colorFrequency={1}
+          noise={0.4}
+          glow={1}
+          transparent={true}
+          suspendWhenOffscreen={false}
+        />
+      </Box>
       <HideOnScroll>
         <AppBar
           position="sticky"
@@ -113,7 +139,28 @@ const Layout = ({ children }) => {
                 </Typography>
               </Box>
 
-              {isAdmin && (
+              {!isAdmin ? (
+                <Button
+                  color="inherit"
+                  startIcon={<AdminPanelSettings />}
+                  onClick={() => navigate('/admin')}
+                  sx={{
+                    borderRadius: 2,
+                    px: 3,
+                    py: 1,
+                    border: '1px solid rgba(57, 255, 20, 0.3)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: 'rgba(57, 255, 20, 0.1)',
+                      borderColor: '#39FF14',
+                      transform: 'translateY(-2px)',
+                    },
+                  }}
+                >
+                  <Box sx={{ display: { xs: 'none', sm: 'block' } }}>Admin Login</Box>
+                  <Box sx={{ display: { xs: 'block', sm: 'none' } }}>Admin</Box>
+                </Button>
+              ) : (
                 <Button
                   color="inherit"
                   startIcon={<Home />}
@@ -148,6 +195,8 @@ const Layout = ({ children }) => {
           flexDirection: 'column',
           pt: { xs: 3, sm: 4, md: 6 },
           pb: { xs: 4, sm: 6, md: 8 },
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {children}
@@ -161,6 +210,8 @@ const Layout = ({ children }) => {
           mt: 'auto',
           background: 'linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.8) 50%, #1A1A1A 100%)',
           borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <Container maxWidth="lg">
